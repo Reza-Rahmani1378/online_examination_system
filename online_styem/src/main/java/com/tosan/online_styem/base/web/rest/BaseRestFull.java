@@ -13,11 +13,13 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+
 public class BaseRestFull<E extends BaseEntity<PK>, D extends BaseDTO<PK>, PK extends Serializable,
         S extends BaseService<E, PK>, M extends BaseMapper<E, D>> {
 
 
     private final S service;
+
 
     private final M mapper;
 

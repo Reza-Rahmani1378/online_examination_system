@@ -6,15 +6,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class OnlineStyemApplication extends SpringBootServletInitializer {
+public class OnlineSystemApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(OnlineStyemApplication.class);
+		return builder.sources(OnlineSystemApplication.class);
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(OnlineStyemApplication.class, args);
+		SpringApplication.run(OnlineSystemApplication.class, args);
 	}
 
 }

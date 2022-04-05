@@ -2,6 +2,7 @@ package com.tosan.online_styem.services.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
+import com.tosan.online_styem.base.BaseDTO;
 import com.tosan.online_styem.models.enumeration.UserType;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import javax.persistence.Enumerated;
 
 @Getter
 @Setter
-public class UserDTO {
+public class UserDTO extends BaseDTO<Long> {
     private Long id;
 
     @JsonProperty("firstName")

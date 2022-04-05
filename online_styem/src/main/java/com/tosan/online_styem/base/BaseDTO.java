@@ -9,5 +9,5 @@ import java.io.Serializable;
 @Setter
 public class BaseDTO <PK extends Serializable> implements Serializable{
 
-    private PK id;
+    protected PK id;
 }

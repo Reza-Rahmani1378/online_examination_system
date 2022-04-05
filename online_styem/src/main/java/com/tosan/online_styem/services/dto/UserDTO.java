@@ -13,7 +13,7 @@ import javax.persistence.Enumerated;
 @Getter
 @Setter
 public class UserDTO extends BaseDTO<Long> {
-    private Long id;
+
 
     @JsonProperty("firstName")
     private String firstName;

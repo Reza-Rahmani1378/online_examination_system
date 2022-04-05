@@ -18,6 +18,11 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <dependencies>
+        <!--<dependency>
+            <groupId>com.tosan</groupId>
+            <artifactId>online_styem</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -80,6 +85,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.6.6</version>
                 <configuration>
                     <excludes>
                         <exclude>
@@ -107,13 +113,20 @@
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
+                        <dependency>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
+                        </dependency>
+
 
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <compilerArg>
-                            -Amapstruct.defaultComponentModel = spring
+                            -Amapstruct.defaultComponentModel=spring
                         </compilerArg>
                     </compilerArgs>
+
                 </configuration>
             </plugin>
 

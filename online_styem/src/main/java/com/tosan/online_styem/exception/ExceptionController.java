@@ -16,4 +16,12 @@ public class ExceptionController {
                 HttpStatus.BAD_REQUEST
         );
     }
+
+    @ExceptionHandler(value = AccessDeniedRunTimeException.class)
+    public ResponseEntity<String> handle(AccessDeniedRunTimeException a) {
+        return new ResponseEntity<>(
+                a.getMessage(),
+                HttpStatus.FORBIDDEN
+        );
+    }
 }

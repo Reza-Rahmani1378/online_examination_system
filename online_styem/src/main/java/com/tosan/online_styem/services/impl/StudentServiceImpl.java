@@ -43,7 +43,12 @@ public class StudentServiceImpl extends BaseServiceImpl<Student, Long, StudentRe
 
     @Override
     public void deleteByIdNotSecure(Long id) {
-        super.deleteByIdNotSecure(id);
-        throw new AccessDeniedRunTimeException("can't delete entity with id " + id);
+        try {
+            super.deleteByIdNotSecure(id);
+
+        } catch (Exception e) {
+            throw new AccessDeniedRunTimeException("can't delete entity with id " + id);
+
+        }
     }
 }

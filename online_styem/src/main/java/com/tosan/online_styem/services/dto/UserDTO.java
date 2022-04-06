@@ -14,6 +14,7 @@ import javax.persistence.Enumerated;
 @Setter
 public class UserDTO extends BaseDTO<Long> {
 
+    private Long id;
 
     @JsonProperty("firstName")
     private String firstName;

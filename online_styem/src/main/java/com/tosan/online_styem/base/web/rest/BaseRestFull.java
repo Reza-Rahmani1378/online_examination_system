@@ -7,7 +7,6 @@ import com.tosan.online_styem.base.service.BaseService;
 import com.tosan.online_styem.exception.BadInputRunTimeException;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -29,7 +28,7 @@ public class BaseRestFull<E extends BaseEntity<PK>, D extends BaseDTO<PK>, PK ex
         this.mapper = mapper;
     }
 
-    @GetMapping
+//    @GetMapping
     @ApiOperation(value = "get all entity")
     public ResponseEntity<List<D>> getAll() {
         return ResponseEntity.ok(
@@ -40,8 +39,8 @@ public class BaseRestFull<E extends BaseEntity<PK>, D extends BaseDTO<PK>, PK ex
     }
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<D> findById(@PathVariable("id") PK id) {
+    //    @GetMapping("/{id}")
+    public ResponseEntity<D> findById(PK id) {
         Optional<E> optionalE = service.findByIdNotSecure(id);
 
         /*if (optionalE.isPresent()) {
@@ -72,16 +71,16 @@ public class BaseRestFull<E extends BaseEntity<PK>, D extends BaseDTO<PK>, PK ex
     }
 
 
-    @DeleteMapping("{/id}")
+    //    @DeleteMapping
     @ApiOperation(value = "delete by id")
-    public ResponseEntity<Void> deleteById(@PathVariable("id") PK id) {
+    public ResponseEntity<Void> deleteById(PK id) {
         service.deleteByIdNotSecure(id);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping
+    //    @PostMapping
     @ApiOperation(value = "save new entity")
-    public ResponseEntity<D> save(@RequestBody D d) {
+    public ResponseEntity<D> save(D d) {
         if (d.getId() != null) {
             return ResponseEntity.badRequest().build();
         }
@@ -95,19 +94,21 @@ public class BaseRestFull<E extends BaseEntity<PK>, D extends BaseDTO<PK>, PK ex
         );
     }
 
-    @PutMapping
+    //    @PutMapping
     @ApiOperation(value = "update entity")
-    public ResponseEntity<D> update(@RequestBody D d) {
+    public ResponseEntity<D> update(D d) {
         if (d.getId() == null) {
             return ResponseEntity.badRequest().build();
         }
 
-        E entity = service.saveNotSecure(
-                mapper.convertDTOToEntity(d)
+        E entity = mapper.convertDTOToEntity(d);
+        entity.setId(d.getId());
+        E updateEntity = service.saveNotSecure(
+                entity
         );
 
         return ResponseEntity.ok(
-                mapper.convertEntityToDTO(entity)
+                mapper.convertEntityToDTO(updateEntity)
         );
     }
 

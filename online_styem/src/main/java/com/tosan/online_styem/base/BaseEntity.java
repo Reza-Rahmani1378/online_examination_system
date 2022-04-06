@@ -16,5 +16,5 @@ public class BaseEntity<PK extends Serializable> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private PK id;
+    protected PK id;
 }

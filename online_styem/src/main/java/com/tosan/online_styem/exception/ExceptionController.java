@@ -24,4 +24,12 @@ public class ExceptionController {
                 HttpStatus.FORBIDDEN
         );
     }
+
+    @ExceptionHandler(value = NotExistUserEntity.class)
+    public ResponseEntity<String> handle(NotExistUserEntity a) {
+        return new ResponseEntity<>(
+                a.getMessage(),
+                HttpStatus.NOT_FOUND
+        );
+    }
 }

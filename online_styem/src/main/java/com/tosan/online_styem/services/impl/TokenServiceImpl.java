@@ -51,4 +51,22 @@ public class TokenServiceImpl extends BaseServiceImpl<Token, Integer, TokenRepos
 
         }
     }
+
+    @Override
+    public int getTokenDetail(String emailId) {
+        int tokenId = 0;
+        try {
+            Token tokenByEmailId = super.repository.getTokenByEmailId(emailId);
+            if (tokenByEmailId != null) {
+                tokenId = tokenByEmailId.getId();
+                return tokenId;
+            }
+
+        } catch (Exception e) {
+            throw new AccessDeniedRunTimeException("Exception while getting the Token Id.");
+
+        }
+
+        return tokenId;
+    }
 }

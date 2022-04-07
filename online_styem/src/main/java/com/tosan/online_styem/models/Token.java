@@ -24,7 +24,7 @@ public class Token extends BaseEntity<Integer> {
 
 
     @Column(name = Token.USER_ID)
-    private int userId;
+    private Long userId;
 
     @Column(name = Token.AUTHENTICATION_TOKEN)
     private String authenticationToken;

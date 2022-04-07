@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/home")
 public class HomeRestController extends BaseRestFull<User, UserDTO, Long, UserService, UserMapper> {
 
 
@@ -53,6 +53,16 @@ public class HomeRestController extends BaseRestFull<User, UserDTO, Long, UserSe
 
         return getAll();
     }*/
+
+//    @GetMapping("/registerUser")
+//    public void registerUser(@RequestBody UserDTO userDTO) {
+//
+//    }
+
+    @PostMapping("/saveUser")
+    public int saveUser(@RequestBody UserDTO userDTO) {
+
+    }
 
 
 }

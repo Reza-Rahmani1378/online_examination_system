@@ -23,8 +23,7 @@ public class Professor extends User{
                      String username,
                      String password,
                      String nationalCode,
-                     String email,
-                     boolean isConfirmed) {
-        super(firstName, lastName, username, password, nationalCode, email, UserType.PROFESSOR, isConfirmed);
+                     String email) {
+        super(firstName, lastName, username, password, nationalCode, email, UserType.PROFESSOR, false);
     }
 }

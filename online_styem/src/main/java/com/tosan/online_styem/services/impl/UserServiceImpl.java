@@ -51,4 +51,9 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserRepository>
         }
 
     }
+
+    @Override
+    public User getUserByPasswordAndEmail(String password, String email) {
+        return super.repository.getUserByPasswordAndEmail(password, email);
+    }
 }

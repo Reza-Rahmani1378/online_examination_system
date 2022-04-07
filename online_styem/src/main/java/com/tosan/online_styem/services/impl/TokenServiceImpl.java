@@ -4,7 +4,9 @@ import com.tosan.online_styem.base.service.impl.BaseServiceImpl;
 import com.tosan.online_styem.exception.AccessDeniedRunTimeException;
 import com.tosan.online_styem.models.Token;
 import com.tosan.online_styem.repositories.TokenRepository;
+import com.tosan.online_styem.resource.mapper.TokenMapper;
 import com.tosan.online_styem.services.TokenService;
+import com.tosan.online_styem.services.dto.TokenDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +17,11 @@ import java.util.Optional;
 @Service
 public class TokenServiceImpl extends BaseServiceImpl<Token, Integer, TokenRepository> implements TokenService {
 
-    public TokenServiceImpl(TokenRepository repository) {
+    private final TokenMapper tokenMapper;
+
+    public TokenServiceImpl(TokenRepository repository, TokenMapper tokenMapper) {
         super(repository);
+        this.tokenMapper = tokenMapper;
     }
 
     @Override
@@ -73,5 +78,10 @@ public class TokenServiceImpl extends BaseServiceImpl<Token, Integer, TokenRepos
     @Override
     public boolean updateToken(String email, String authenticationToken, String secretKey) {
         return super.repository.updateToken(email, authenticationToken, secretKey) == 1;
+    }
+
+    @Override
+    public void saveUserEmail(TokenDTO tokenDTO) {
+        super.saveNotSecure(tokenMapper.convertDTOToEntity(tokenDTO));
     }
 }

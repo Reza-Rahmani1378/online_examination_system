@@ -69,4 +69,9 @@ public class TokenServiceImpl extends BaseServiceImpl<Token, Integer, TokenRepos
 
         return tokenId;
     }
+
+    @Override
+    public boolean updateToken(String email, String authenticationToken, String secretKey) {
+        return super.repository.updateToken(email, authenticationToken, secretKey) == 1;
+    }
 }

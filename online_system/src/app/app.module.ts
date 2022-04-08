@@ -2,14 +2,16 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {SingupComponent} from './singup/singup/singup.component';
-import {SignupComponent} from './signup/signup/signup.component';
+import {LoginComponent} from './login/login.component';
+import {HomeComponent} from './home/home.component';
+import {SignupComponent} from "./signup/signup.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SingupComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule

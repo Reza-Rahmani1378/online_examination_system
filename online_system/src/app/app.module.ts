@@ -7,7 +7,7 @@ import {HomeComponent} from './home/home.component';
 import {SignupComponent} from "./signup/signup.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import {RouterModule} from "@angular/router";
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

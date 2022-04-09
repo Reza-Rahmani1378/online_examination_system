@@ -58,7 +58,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserRepository>
     }
 
     @Override
-    public String getUserByEmail(String email) {
+    public String getUserTypeByEmail(String email) {
         return super.repository.getUserByEmail(email).getUserType().name();
 
     }

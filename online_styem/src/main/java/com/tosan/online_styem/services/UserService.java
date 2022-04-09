@@ -6,4 +6,6 @@ import com.tosan.online_styem.models.User;
 public interface UserService extends BaseService<User, Long> {
 
     User login(String password, String email);
+
+    String getUserByEmail(String email);
 }

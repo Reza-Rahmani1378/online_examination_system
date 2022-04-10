@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", exposedHeaders = "Authorization")
 public class HomeRestController extends BaseRestFull<User, UserDTO, Long, UserService, UserMapper> {
 
@@ -118,14 +118,27 @@ public class HomeRestController extends BaseRestFull<User, UserDTO, Long, UserSe
 
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<Long> login(@RequestBody UserDTO userDTO) {
+    @PostMapping(value = "/login" /*, produces = MediaType.APPLICATION_JSON_VALUE*/)
+    public ResponseEntity login(@RequestBody UserDTO userDTO) {
         Long status = 0L;
         HttpHeaders httpHeader = null;
+        // get userType  by email
+//        String userType = null;
+
 
         userDTO =
                 userMapper.convertEntityToDTO(userService.login(userDTO.getPassword(), userDTO.getEmail()));
         if (userDTO != null) {
+//            userType =userService.getUserTypeByEmail(userDTO.getEmail());
+
+            /*switch (userType) {
+                case "ADMIN" :
+                    = 1L;
+                case "PROFESSOR" :
+                    = 2L;
+                case "STUDENT" :
+                    = 3L;
+            }*/
             status = userDTO.getId();
         } else {
             throw new NotExistUserEntity("This User is not Signup.");
@@ -137,7 +150,7 @@ public class HomeRestController extends BaseRestFull<User, UserDTO, Long, UserSe
                     "Java",
                     "JWT token",
                     userDTO.getUserType().name(),
-                    600000
+                    1800000
 
             );
 
@@ -153,23 +166,23 @@ public class HomeRestController extends BaseRestFull<User, UserDTO, Long, UserSe
             /*
              * If token exist then update Token else create and insert the token.
              */
-            if (isUserEmailExist > 0) {
-                tokenService.updateToken(userDTO.getEmail(), token, tokenData[1]);
-            } else {
+            if (isUserEmailExist <= 0) {
                 TokenDTO tokenDTO = TokenDTO.builder()
                         .emailId(userDTO.getEmail())
                         .userId(userDTO.getId())
                         .build();
                 // save user email in token table
                 tokenService.saveUserEmail(tokenDTO);
-                tokenService.updateToken(userDTO.getEmail(), token, tokenData[1]);
 
             }
+            tokenService.updateToken(userDTO.getEmail(), token, tokenData[1]);
 
-            return new ResponseEntity<>(status, httpHeader, HttpStatus.OK);
+
+            return new ResponseEntity<>(userDTO, httpHeader, HttpStatus.OK);
 
         }
-        return new ResponseEntity<>(status, null, HttpStatus.OK);
+        userDTO.setId(-1L);
+        return new ResponseEntity<>(userDTO, null, HttpStatus.OK);
     }
 
 }

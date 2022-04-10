@@ -1,1 +1,72 @@
-<p>signup works!</p>
+<div class="container">
+  <h2>Signup Form</h2>
+
+  <form [formGroup]="form" #UserInformation (ngSubmit)="userForm(UserInformation)">
+
+    <div class="row">
+      <div class=" col-md-offset-1 col-md-4">
+        <label for="firstName">First Name</label>
+        <input formControlName="firstName" id="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-offset-1 col-md-4">
+        <label for="lastName">Last Name</label>
+        <input formControlName="lastName" id="lastName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-offset-1 col-md-4">
+        <label for="username">Username</label>
+        <input formControlName="username" id="username" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-offset-1 col-md-4">
+        <label for="email">Email</label>
+        <input formControlName="email" id="email" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-offset-1 col-md-4">
+        <label for="nationalCode">National Code</label>
+        <input formControlName="nationalCode" id="nationalCode" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-offset-1 col-md-4">
+        <label for="password">Password</label>
+        <input formControlName="password" id="password" class="form-control" type="password">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-offset-1 col-md-4">
+        <label for="confirmPassword">Confirm Password</label>
+        <input formControlName="confirmPassword" id="confirmPassword" class="form-control" type="password">
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="radio col-md-offset-1">User Type</label>
+      <div class="radio col-md-offset-1 col-md-1" *ngFor="let type of userTypes let indexOfElement = index">
+        <label>
+          <input type="radio"
+                 formControlName="userType"
+                 [value]="type">{{types[indexOfElement]}}
+        </label>
+
+      </div>
+    </div>
+    <div class="row" style="margin-top: 40px;">
+      <div class="col-md-offset-1 col-md-4">
+        <button class="btn btn-md btn-primary btn-style" type="submit">Signup</button>
+      </div>
+    </div>
+  </form>
+</div>

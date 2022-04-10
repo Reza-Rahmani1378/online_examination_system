@@ -39,7 +39,7 @@ public class GenerateToken {
                 .setIssuedAt(now)
                 .setSubject(subject)
                 .setIssuer(issuer)
-                .setPayload(role)
+                /*.setPayload(role)*/
                 .signWith(signatureAlgorithm, signingKey);
 
         //if it has been specified, let's add the expiration

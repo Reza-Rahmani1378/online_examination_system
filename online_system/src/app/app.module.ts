@@ -8,13 +8,20 @@ import {SignupComponent} from "./signup/signup.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
+import {AdminWorkbenchComponent} from './admin/admin-workbench/admin-workbench.component';
+import {ProfessorWorkbenchComponent} from './professor/professor-workbench/professor-workbench.component';
+import {StudentWorkbenchComponent} from './student/student-workbench/student-workbench.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdminWorkbenchComponent,
+    ProfessorWorkbenchComponent,
+    StudentWorkbenchComponent
   ],
   imports: [
     BrowserModule,
